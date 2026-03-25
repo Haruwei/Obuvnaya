@@ -1,0 +1,136 @@
+﻿insert into roles (role_name) values
+('Гость'),
+('Авторизированный клиент'),
+('Менеджер'),
+('Администратор');
+
+insert into categories (category_name, description) values
+('Женская обувь', NULL),
+('Мужская обувь', NULL);
+
+insert into suppliers (supplier_name, supplier_address, contact_phone, contact_email, inn) values
+('Kari', NULL, NULL, NULL, NULL),
+('Обувь для вас', NULL, NULL, NULL, NULL);
+
+insert into order_statuses (status_name) values
+('Новый'),
+('В обработке'),
+('Выполнен'),
+('Отменен'),
+('Завершен');
+
+insert into delivery_points (point_address, working_hours, phone) values
+('420151, г. Лесной, ул. Вишневая, 32', NULL, NULL),
+('125061, г. Лесной, ул. Подгорная, 8', NULL, NULL),
+('630370, г. Лесной, ул. Шоссейная, 24', NULL, NULL),
+('400562, г. Лесной, ул. Зеленая, 32', NULL, NULL),
+('614510, г. Лесной, ул. Маяковского, 47', NULL, NULL),
+('410542, г. Лесной, ул. Светлая, 46', NULL, NULL),
+('620839, г. Лесной, ул. Цветочная, 8', NULL, NULL),
+('443890, г. Лесной, ул. Коммунистическая, 1', NULL, NULL),
+('603379, г. Лесной, ул. Спортивная, 46', NULL, NULL),
+('603721, г. Лесной, ул. Гоголя, 41', NULL, NULL),
+('410172, г. Лесной, ул. Северная, 13', NULL, NULL),
+('614611, г. Лесной, ул. Молодежная, 50', NULL, NULL),
+('454311, г.Лесной, ул. Новая, 19', NULL, NULL),
+('660007, г.Лесной, ул. Октябрьская, 19', NULL, NULL),
+('603036, г. Лесной, ул. Садовая, 4', NULL, NULL),
+('394060, г.Лесной, ул. Фрунзе, 43', NULL, NULL),
+('410661, г. Лесной, ул. Школьная, 50', NULL, NULL),
+('625590, г. Лесной, ул. Коммунистическая, 20', NULL, NULL),
+('625683, г. Лесной, ул. 8 Марта', NULL, NULL),
+('450983, г.Лесной, ул. Комсомольская, 26', NULL, NULL),
+('394782, г. Лесной, ул. Чехова, 3', NULL, NULL),
+('603002, г. Лесной, ул. Дзержинского, 28', NULL, NULL),
+('450558, г. Лесной, ул. Набережная, 30', NULL, NULL),
+('344288, г. Лесной, ул. Чехова, 1', NULL, NULL),
+('614164, г.Лесной, ул. Степная, 30', NULL, NULL),
+('394242, г. Лесной, ул. Коммунистическая, 43', NULL, NULL),
+('660540, г. Лесной, ул. Солнечная, 25', NULL, NULL),
+('125837, г. Лесной, ул. Шоссейная, 40', NULL, NULL),
+('125703, г. Лесной, ул. Партизанская, 49', NULL, NULL),
+('625283, г. Лесной, ул. Победы, 46', NULL, NULL),
+('614753, г. Лесной, ул. Полевая, 35', NULL, NULL),
+('426030, г. Лесной, ул. Маяковского, 44', NULL, NULL),
+('450375, г. Лесной ул. Клубная, 44', NULL, NULL),
+('625560, г. Лесной, ул. Некрасова, 12', NULL, NULL),
+('630201, г. Лесной, ул. Комсомольская, 17', NULL, NULL),
+('190949, г. Лесной, ул. Мичурина, 26', NULL, NULL);
+
+insert into users (login, password, last_name, first_name, surname, email, phone, role_id, is_active) values
+('94d5ous@gmail.com', 'uzWC67', 'Никифорова', 'Весения', 'Николаевна', '94d5ous@gmail.com', NULL, 4, true),
+('uth4iz@mail.com', '2L6KZG', 'Сазонов', 'Руслан', 'Германович', 'uth4iz@mail.com', NULL, 4, true),
+('yzls62@outlook.com', 'JlFRCZ', 'Одинцов', 'Серафим', 'Артёмович', 'yzls62@outlook.com', NULL, 4, true),
+('1diph5e@tutanota.com', '8ntwUp', 'Степанов', 'Михаил', 'Артёмович', '1diph5e@tutanota.com', NULL, 3, true),
+('tjde7c@yahoo.com', 'YOyhfR', 'Ворсин', 'Петр', 'Евгеньевич', 'tjde7c@yahoo.com', NULL, 3, true),
+('wpmrc3do@tutanota.com', 'RSbvHv', 'Старикова', 'Елена', 'Павловна', 'wpmrc3do@tutanota.com', NULL, 3, true),
+('5d4zbu@tutanota.com', 'rwVDh9', 'Михайлюк', 'Анна', 'Вячеславовна', '5d4zbu@tutanota.com', NULL, 2, true),
+('ptec8ym@yahoo.com', 'LdNyos', 'Ситдикова', 'Елена', 'Анатольевна', 'ptec8ym@yahoo.com', NULL, 2, true),
+('1qz4kw@mail.com', 'gynQMT', 'Ворсин', 'Петр', 'Евгеньевич', '1qz4kw@mail.com', NULL, 2, true),
+('4np6se@mail.com', 'AtnDjr', 'Старикова', 'Елена', 'Павловна', '4np6se@mail.com', NULL, 2, true);
+
+insert into products (article, product_name, measure, price, discount, prod_qty, manufacturer, category_id, supplier_id, description, photo, is_deleted) values
+('А112Т4', 'Ботинки', 'шт.', 4990, 3, 6, 'Kari', 1, 1, 'Женские Ботинки демисезонные kari', '1.jpg', false),
+('F635R4', 'Ботинки', 'шт.', 3244, 2, 13, 'Marco Tozzi', 1, 2, 'Ботинки Marco Tozzi женские демисезонные, размер 39, цвет бежевый', '2.jpg', false),
+('H782T5', 'Туфли', 'шт.', 4499, 4, 5, 'Kari', 2, 1, 'Туфли kari мужские классика MYZ21AW-450A, размер 43, цвет: черный', '3.jpg', false),
+('G783F5', 'Ботинки', 'шт.', 5900, 2, 8, 'Рос', 2, 1, 'Мужские ботинки Рос-Обувь кожаные с натуральным мехом', '4.jpg', false),
+('J384T6', 'Ботинки', 'шт.', 3800, 2, 16, 'Rieker', 2, 2, 'B3430/14 Полуботинки мужские Rieker', '5.jpg', false),
+('D572U8', 'Кроссовки', 'шт.', 4100, 3, 6, 'Рос', 2, 2, '129615-4 Кроссовки мужские', '6.jpg', false),
+('F572H7', 'Туфли', 'шт.', 2700, 2, 14, 'Marco Tozzi', 1, 1, 'Туфли Marco Tozzi женские летние, размер 39, цвет черный', '7.jpg', false),
+('D329H3', 'Полуботинки', 'шт.', 1890, 4, 4, 'Alessio Nesca', 1, 2, 'Полуботинки Alessio Nesca женские 3-30797-47, размер 37, цвет: бордовый', '8.jpg', false),
+('B320R5', 'Туфли', 'шт.', 4300, 2, 6, 'Rieker', 1, 1, 'Туфли Rieker женские демисезонные, размер 41, цвет коричневый', '9.jpg', false),
+('G432E4', 'Туфли', 'шт.', 2800, 3, 15, 'Kari', 1, 1, 'Туфли kari женские TR-YR-413017, размер 37, цвет: черный', '10.jpg', false),
+('S213E3', 'Полуботинки', 'шт.', 2156, 3, 6, 'CROSBY', 2, 2, '407700/01-01 Полуботинки мужские CROSBY', 'picture.png', false),
+('E482R4', 'Полуботинки', 'шт.', 1800, 2, 14, 'Kari', 1, 1, 'Полуботинки kari женские MYZ20S-149, размер 41, цвет: черный', 'picture.png', false),
+('S634B5', 'Кеды', 'шт.', 5500, 3, 0, 'CROSBY', 2, 2, 'Кеды Caprice мужские демисезонные, размер 42, цвет черный', 'picture.png', false),
+('K345R4', 'Полуботинки', 'шт.', 2100, 2, 3, 'CROSBY', 2, 2, '407700/01-02 Полуботинки мужские CROSBY', 'picture.png', false),
+('O754F4', 'Туфли', 'шт.', 5400, 4, 18, 'Rieker', 1, 2, 'Туфли женские демисезонные Rieker артикул 55073-68/37', 'picture.png', false),
+('G531F4', 'Ботинки', 'шт.', 6600, 12, 9, 'Kari', 1, 1, 'Ботинки женские зимние ROMER арт. 893167-01 Черный', 'picture.png', false),
+('J542F5', 'Тапочки', 'шт.', 500, 13, 0, 'Kari', 2, 1, 'Тапочки мужские Арт.70701-55-67син р.41', 'picture.png', false),
+('B431R5', 'Ботинки', 'шт.', 2700, 2, 5, 'Rieker', 2, 2, 'Мужские кожаные ботинки/мужские ботинки', 'picture.png', false),
+('P764G4', 'Туфли', 'шт.', 6800, 15, 15, 'CROSBY', 1, 1, 'Туфли женские, ARGO, размер 38', 'picture.png', false),
+('C436G5', 'Ботинки', 'шт.', 10200, 15, 9, 'Alessio Nesca', 1, 1, 'Ботинки женские, ARGO, размер 40', 'picture.png', false),
+('F427R5', 'Ботинки', 'шт.', 11800, 15, 11, 'Rieker', 1, 2, 'Ботинки на молнии с декоративной пряжкой FRAU', 'picture.png', false),
+('N457T5', 'Полуботинки', 'шт.', 4600, 3, 13, 'CROSBY', 1, 1, 'Полуботинки Ботинки черные зимние, мех', 'picture.png', false),
+('D364R4', 'Туфли', 'шт.', 12400, 16, 5, 'Kari', 1, 1, 'Туфли Luiza Belly женские Kate-lazo черные из натуральной замши', 'picture.png', false),
+('S326R5', 'Тапочки', 'шт.', 9900, 17, 15, 'CROSBY', 2, 2, 'Мужские кожаные тапочки "Профиль С.Дали"', 'picture.png', false),
+('L754R4', 'Полуботинки', 'шт.', 1700, 2, 7, 'Kari', 1, 1, 'Полуботинки kari женские WB2020SS-26, размер 38, цвет: черный', 'picture.png', false),
+('M542T5', 'Кроссовки', 'шт.', 2800, 18, 3, 'Rieker', 2, 2, 'Кроссовки мужские TOFA', 'picture.png', false),
+('D268G5', 'Туфли', 'шт.', 4399, 3, 12, 'Rieker', 1, 2, 'Туфли Rieker женские демисезонные, размер 36, цвет коричневый', 'picture.png', false),
+('T324F5', 'Сапоги', 'шт.', 4699, 2, 5, 'CROSBY', 1, 1, 'Сапоги замша Цвет: синий', 'picture.png', false),
+('K358H6', 'Тапочки', 'шт.', 599, 20, 2, 'Rieker', 2, 1, 'Тапочки мужские син р.41', 'picture.png', false),
+('H535R5', 'Ботинки', 'шт.', 2300, 2, 7, 'Rieker', 1, 2, 'Женские Ботинки демисезонные', 'picture.png', false);
+
+insert into orders (order_id, user_id, order_date, delivery_point_id, delivery_date, order_status, receive_code, is_deleted) values
+(1, (SELECT user_id FROM users WHERE login = '1diph5e@tutanota.com'), '2025-02-27', 1, '2025-04-20', 5, '901', false),
+(2, (SELECT user_id FROM users WHERE login = '94d5ous@gmail.com'), '2022-09-28', 11, '2025-04-21', 5, '902', false),
+(3, (SELECT user_id FROM users WHERE login = 'uth4iz@mail.com'), '2025-03-21', 2, '2025-04-22', 5, '903', false),
+(4, (SELECT user_id FROM users WHERE login = 'yzls62@outlook.com'), '2025-02-20', 11, '2025-04-23', 5, '904', false),
+(5, (SELECT user_id FROM users WHERE login = '1diph5e@tutanota.com'), '2025-03-17', 2, '2025-04-24', 5, '905', false),
+(6, (SELECT user_id FROM users WHERE login = '94d5ous@gmail.com'), '2025-03-01', 15, '2025-04-25', 5, '906', false),
+(7, (SELECT user_id FROM users WHERE login = 'uth4iz@mail.com'), '2025-02-28', 3, '2025-04-26', 5, '907', false),
+(8, (SELECT user_id FROM users WHERE login = 'yzls62@outlook.com'), '2025-03-31', 19, '2025-04-27', 1, '908', false),
+(9, (SELECT user_id FROM users WHERE login = '1diph5e@tutanota.com'), '2025-04-02', 5, '2025-04-28', 1, '909', false),
+(10, (SELECT user_id FROM users WHERE login = '1diph5e@tutanota.com'), '2025-04-03', 19, '2025-04-29', 1, '910', false);
+
+insert into order_items (order_id, product_article, qty) values
+(1, 'А112Т4', 2),
+(1, 'F635R4', 2),
+(2, 'H782T5', 1),
+(2, 'G783F5', 1),
+(3, 'J384T6', 10),
+(3, 'D572U8', 10),
+(4, 'F572H7', 5),
+(4, 'D329H3', 4),
+(5, 'А112Т4', 2),
+(5, 'F635R4', 2),
+(6, 'H782T5', 1),
+(6, 'G783F5', 1),
+(7, 'J384T6', 10),
+(7, 'D572U8', 10),
+(8, 'F572H7', 5),
+(8, 'D329H3', 4),
+(9, 'B320R5', 5),
+(9, 'G432E4', 1),
+(10, 'S213E3', 5),
+(10, 'E482R4', 5);

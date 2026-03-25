@@ -1,0 +1,80 @@
+﻿create table roles 
+	(role_id serial primary key,
+    role_name varchar(50) not null unique);
+
+create table users 
+	(user_id serial primary key,
+    login varchar(50) not null unique,
+    password varchar(100) not null,
+    last_name varchar(100) not null,
+    first_name varchar(100) not null,
+    surname varchar(100),
+    email varchar(100),
+    phone varchar(20),
+    role_id integer not null,
+    created_at timestamp default current_timestamp,
+    is_active boolean default true,
+    foreign key (role_id) references roles(role_id));
+
+create table categories 
+	(category_id serial primary key,
+    category_name varchar(100) not null unique,
+    description text);
+
+create table suppliers 
+	(supplier_id serial primary key,
+    supplier_name varchar(200) not null unique,
+    supplier_address text,
+    contact_phone varchar(20),
+    contact_email varchar(100),
+    inn varchar(12));
+
+create table products 
+	(product_id serial primary key,
+    article varchar(50) not null unique,
+    product_name varchar(200) not null,
+    measure varchar(20) default 'шт.',
+    price decimal(10, 2) not null check (price >= 0),
+    discount decimal(5, 2) default 0 check (discount >= 0 and discount <= 100),
+    prod_qty integer default 0 check (prod_qty >= 0),
+    manufacturer varchar(200),
+    category_id integer not null,
+    supplier_id integer,
+    description text,
+    photo varchar(500) default 'picture.png',
+    is_deleted boolean default false,
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp,
+    foreign key (category_id) references categories(category_id),
+    foreign key (supplier_id) references suppliers(supplier_id));
+
+create table order_statuses 
+	(status_id serial primary key,
+    status_name varchar(50) not null unique);
+
+create table delivery_points
+	(delivery_point_id serial primary key,
+    point_address text not null,
+    working_hours varchar(200),
+    phone varchar(20));
+
+create table orders 
+	(order_id serial primary key,
+    user_id integer not null,
+    order_date timestamp default current_timestamp,
+    delivery_point_id integer not null,
+    delivery_date date,
+    order_status integer not null,
+    receive_code varchar(10),
+    is_deleted boolean default false,
+    foreign key (user_id) references users(user_id),
+    foreign key (delivery_point_id) references delivery_points(delivery_point_id),
+    foreign key (order_status) references order_statuses(status_id));
+
+create table order_items 
+	(order_item_id serial primary key,
+    order_id integer not null,
+    product_article varchar(50) not null,
+    qty integer not null check (qty > 0),
+    foreign key (order_id) references orders(order_id),
+    foreign key (product_article) references products(article));

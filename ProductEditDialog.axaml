@@ -1,0 +1,56 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Obuvnaya.ProductEditDialog"
+        Title="Редактирование товара"
+        Width="450"
+        Height="600"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False"
+        Icon="/Resources/Icon.png">
+
+    <ScrollViewer>
+        <StackPanel Margin="25" Spacing="12">
+            <TextBlock x:Name="TitleBlock" Text="Новый товар" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+            <TextBlock Text="Артикул *:" FontSize="11" Foreground="#666"/>
+            <TextBox x:Name="ArticleBox" Height="35"/>
+
+            <TextBlock Text="Название *:" FontSize="11" Foreground="#666"/>
+            <TextBox x:Name="NameBox" Height="35"/>
+
+            <TextBlock Text="Категория *:" FontSize="11" Foreground="#666"/>
+            <ComboBox x:Name="CategoryBox" Height="35"/>
+
+            <TextBlock Text="Цена *:" FontSize="11" Foreground="#666"/>
+            <TextBox x:Name="PriceBox" Height="35"/>
+
+            <TextBlock Text="Поставщик:" FontSize="11" Foreground="#666"/>
+            <ComboBox x:Name="SupplierBox" Height="35"/>
+
+            <TextBlock Text="Производитель:" FontSize="11" Foreground="#666"/>
+            <TextBox x:Name="ManufacturerBox" Height="35"/>
+
+            <TextBlock Text="Количество:" FontSize="11" Foreground="#666"/>
+            <TextBox x:Name="QtyBox" Text="0" Height="35"/>
+
+            <TextBlock Text="Скидка %:" FontSize="11" Foreground="#666"/>
+            <TextBox x:Name="DiscountBox" Text="0" Height="35"/>
+
+            <TextBlock Text="Ед. измерения:" FontSize="11" Foreground="#666"/>
+            <TextBox x:Name="MeasureBox" Text="шт." Height="35"/>
+
+            <TextBlock Text="Описание:" FontSize="11" Foreground="#666"/>
+            <TextBox x:Name="DescBox" AcceptsReturn="True" Height="60"/>
+
+            <TextBlock Text="Фото:" FontSize="11" Foreground="#666"/>
+            <TextBox x:Name="PhotoBox" Text="picture.png" Height="35"/>
+
+            <TextBlock x:Name="ErrorText" Foreground="Red" TextWrapping="Wrap"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,15,0,0">
+                <Button Content="Сохранить" Click="OnSaveClick" Width="100" Background="#00FA9A"/>
+                <Button Content="Отмена" Click="OnCancelClick" Width="100"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

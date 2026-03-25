@@ -1,0 +1,104 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Obuvnaya.MainWindow"
+        Title="ИС Обувь - Каталог товаров"
+        Width="1200"
+        Height="800"
+        MinWidth="1000"
+        MinHeight="600"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Resources/Icon.png">
+ 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20,15">
+            <Image Source="/Resources/Icon.png" Width="50" Height="50" Margin="0,0,15,0"/>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock x:Name="TitleText" Text="ИС Обувь" FontSize="24" FontWeight="Bold"/>
+                <TextBlock x:Name="RoleText" Text="Каталог товаров" FontSize="12" Foreground="#666"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel x:Name="FilterPanel" Grid.Row="1" Orientation="Horizontal" Spacing="10" Margin="20,0,20,15" IsVisible="False">
+            <TextBox x:Name="SearchBox" Width="250" Watermark="Поиск по названию или артикулу" Height="35"/>
+            <ComboBox x:Name="SupplierCombo" Width="200" PlaceholderText="Все поставщики" Height="35"/>
+            <Button Content="Найти" Click="OnSearchClick" Height="35" Background="#00FA9A"/>
+            <Button Content="Сбросить" Click="OnResetClick" Height="35"/>
+            <Button x:Name="SortBtn" Content="Цена ↑" Click="OnSortClick" Height="35"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="ProductsList" Margin="20,0">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" Spacing="10"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="{Binding DiscountBg}" CornerRadius="8" BorderThickness="1" BorderBrush="#E0E0E0" Padding="15" PointerPressed="OnProductClick">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" Background="#F5F5F5" CornerRadius="4" Width="130" Height="130">
+                                    <Image Source="{Binding PhotoPath}" Stretch="Uniform" Margin="10"/>
+                                    
+                                </Border>
+
+                                <StackPanel Grid.Column="1" Margin="20,0,0,0" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding CategoryName}" FontSize="11" Foreground="#666"/>
+                                    <TextBlock Text="{Binding ProductName}" FontSize="18" FontWeight="Bold" Margin="0,2,0,5"/>
+                                    <TextBlock Text="{Binding Article}" FontSize="12" Foreground="#666" Margin="0,0,0,10"/>
+                                    <TextBlock Text="{Binding PhotoPath}" FontSize="12" Foreground="#666" Margin="0,0,0,10"/>
+                                    
+
+                                    <StackPanel Orientation="Horizontal" Spacing="25">
+                                        <StackPanel>
+                                            <TextBlock Text="Производитель:" FontSize="10" Foreground="#666"/>
+                                            <TextBlock Text="{Binding Manufacturer}" Foreground="Black" Grid.Column="1"/>
+                                            
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock Text="Поставщик:" FontSize="10" Foreground="#666"/>
+                                            <TextBlock Text="{Binding SupplierName}" FontSize="13"/>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock Text="На складе:" FontSize="10" Foreground="#666"/>
+                                            <TextBlock Text="{Binding ProdQty, StringFormat='{}{0} шт.'}" FontSize="13" FontWeight="SemiBold"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Spacing="15" Margin="0,15,0,0">
+                                        <TextBlock Text="{Binding FinalPrice, StringFormat='{}{0} ₽'}" FontSize="22" FontWeight="Bold" Foreground="#1976D2"/>
+                                        <TextBlock Text="{Binding OldPrice, StringFormat='{}{0} ₽'}" FontSize="16" Foreground="Red" TextDecorations="Strikethrough" IsVisible="{Binding HasDiscount}" VerticalAlignment="Bottom"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <Border Grid.Column="2" Width="80" Height="80" CornerRadius="40" Background="{Binding DiscountCircleBg}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding DiscountText}" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="20" Spacing="10">
+            <Button x:Name="AddProductBtn" Content="Добавить товар" Click="OnAddProductClick" IsVisible="False" Background="#00FA9A"/>
+            <Button x:Name="OrdersBtn" Content="Заказы" Click="OnOrdersClick" IsVisible="False" Background="#00FA9A"/>
+            <Button Content="Выход" Click="OnExitClick"/>
+        </StackPanel>
+    </Grid>
+</Window>

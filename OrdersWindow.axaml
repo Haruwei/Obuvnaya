@@ -1,0 +1,82 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Obuvnaya.OrdersWindow"
+        Title="ИС Обувь - Заказы"
+        Width="1000"
+        Height="700"
+        WindowStartupLocation="CenterOwner"
+        Icon="/Resources/Icon.png">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" HorizontalAlignment="Left">
+            <Image Source="/Resources/Icon.png" Width="40" Height="40"/>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Управление заказами" FontSize="20" FontWeight="Bold"/>
+                <TextBlock x:Name="RoleText" FontSize="11" Foreground="#666"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right" Margin="0,0,0,15">
+            <Button x:Name="AddOrderBtn" Content="Добавить заказ" Click="OnAddOrderClick" Background="#00FA9A" IsVisible="False"/>
+            <Button Content="Обновить" Click="OnRefreshClick"/>
+            <Button Content="Закрыть" Click="OnCloseClick"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="OrdersList">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" Spacing="10"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="White" CornerRadius="5" BorderThickness="1" BorderBrush="#E0E0E0" Padding="15" PointerPressed="OnOrderClick">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" Spacing="5">
+                                    <StackPanel Orientation="Horizontal" Spacing="5">
+                                        <TextBlock Text="Заказ №" FontSize="11" Foreground="#666"/>
+                                        <TextBlock Text="{Binding OrderId}" FontSize="14" FontWeight="Bold"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Spacing="5">
+                                        <TextBlock Text="Статус:" FontSize="11" Foreground="#666"/>
+                                        <TextBlock Text="{Binding StatusName}" FontSize="12" FontWeight="SemiBold"/>
+                                    </StackPanel>
+
+                                    <StackPanel Spacing="2">
+                                        <TextBlock Text="Пункт выдачи:" FontSize="11" Foreground="#666"/>
+                                        <TextBlock Text="{Binding DeliveryPointAddress}" FontSize="12"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Spacing="5">
+                                        <TextBlock Text="Дата заказа:" FontSize="11" Foreground="#666"/>
+                                        <TextBlock Text="{Binding DisplayDate}" FontSize="12"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20,0,0,0">
+                                    <TextBlock Text="Дата доставки" FontSize="11" Foreground="#666" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding DeliveryDateDisplay}" FontSize="16" FontWeight="Bold" Foreground="#1976D2" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>

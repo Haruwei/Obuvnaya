@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Obuvnaya.LoginWindow"
+        Title="ИС Обувь - Вход в систему"
+        Width="400"
+        Height="500"
+        CanResize="False"
+        Icon="/Resources/Icon.png"
+        WindowStartupLocation="CenterScreen"
+         >
+
+    <StackPanel Margin="30" Spacing="20" VerticalAlignment="Center" HorizontalAlignment="Center" Width="320">
+
+        <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Center" Margin="0,0,0,20">
+            <Image Source="/Resources/Icon.png" Width="50" Height="50"/>
+            <TextBlock Text="ИС Обувь" FontSize="28" FontWeight="Bold" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <TextBlock Text="Вход в систему" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+        <TextBox x:Name="LoginBox" Watermark="Логин" Height="40"/>
+
+        <TextBox x:Name="PasswordBox" Watermark="Пароль" PasswordChar="*" Height="40"/>
+
+        <TextBlock x:Name="ErrorText" Foreground="Red" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+
+        <Button Content="Войти" Click="OnLoginClick" HorizontalAlignment="Stretch" Height="40" Background="#00FA9A"/>
+
+        <Button Content="Войти как гость" Click="OnGuestClick" HorizontalAlignment="Stretch" Height="40"/>
+
+    </StackPanel>
+</Window>

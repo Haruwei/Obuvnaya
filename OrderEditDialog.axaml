@@ -1,0 +1,103 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Obuvnaya.OrderEditDialog"
+        Title="Редактирование заказа"
+        Width="700"
+        Height="600"
+        WindowStartupLocation="CenterOwner"
+        Icon="/Resources/Icon.png">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="0,0,0,20">
+            <Image Source="/Resources/Icon.png" Width="35" Height="35"/>
+            <TextBlock x:Name="TitleBlock" Text="Новый заказ" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="0,0,0,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Spacing="10" Margin="0,0,10,0">
+                <StackPanel>
+                    <TextBlock Text="Клиент *:" FontSize="11" Foreground="#666"/>
+                    <ComboBox x:Name="UserBox" Height="35"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Статус *:" FontSize="11" Foreground="#666"/>
+                    <ComboBox x:Name="StatusBox" Height="35"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Дата доставки:" FontSize="11" Foreground="#666"/>
+                    <DatePicker x:Name="DeliveryDateBox"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Spacing="10" Margin="10,0,0,0">
+                <StackPanel>
+                    <TextBlock Text="Пункт выдачи *:" FontSize="11" Foreground="#666"/>
+                    <ComboBox x:Name="PointBox" Height="35"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Код получения:" FontSize="11" Foreground="#666"/>
+                    <TextBox x:Name="CodeBox" Height="35"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Сумма заказа:" FontSize="11" Foreground="#666"/>
+                    <TextBlock x:Name="TotalText" Text="0 ₽" FontSize="18" FontWeight="Bold" Foreground="#1976D2"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="2" Background="#F8F9FA" CornerRadius="5" Padding="15" Margin="0,0,0,15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+                    <TextBox x:Name="SearchProductBox" Width="200" Watermark="Поиск товара" Height="35"/>
+                    <ComboBox x:Name="ProductBox" Width="250" Height="35"/>
+                    <TextBox x:Name="QtyBox" Width="60" Text="1" Height="35"/>
+                    <Button Content="Добавить" Click="OnAddProductClick" Background="#00FA9A"/>
+                </StackPanel>
+
+                <DataGrid Grid.Row="1" x:Name="ItemsGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Артикул" Binding="{Binding ProductArticle}" Width="100"/>
+                        <DataGridTextColumn Header="Товар" Binding="{Binding ProductName}" Width="*"/>
+                        <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat='{}{0:N2} ₽'}" Width="100"/>
+                        <DataGridTextColumn Header="Кол-во" Binding="{Binding Quantity}" Width="80"/>
+                        <DataGridTextColumn Header="Сумма" Binding="{Binding Total, StringFormat='{}{0:N2} ₽'}" Width="100"/>
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="×" Click="OnRemoveProductClick" Background="Transparent" Foreground="Red" FontSize="16"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+            <TextBlock x:Name="ErrorText" Foreground="Red" VerticalAlignment="Center" Margin="0,0,20,0"/>
+            <Button Content="Сохранить" Click="OnSaveClick" Width="100" Background="#00FA9A"/>
+            <Button Content="Отмена" Click="OnCancelClick" Width="100"/>
+        </StackPanel>
+    </Grid>
+</Window>
